@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt')
 const User = require('../schemas/user')
 const router = express.Router()
 
+router.get('/', (req, res) => {
+    return res.send('Auth route')
+})
+
 router.post('/register', async (req, res) => {
     const { name, email, password, current_class, school } = req.body
 
