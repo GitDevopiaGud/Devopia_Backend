@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    const { name, email, password, current_class, school } = req.body
+    const { name, email, password, current_class, board, school } = req.body
 
     try {
         const existingLogin = await User.findOne({ email })
@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({ name, email, password: hashedPassword, current_class, school })
+        const newUser = new User({ name, email, password: hashedPassword, current_class, board, school })
         await newUser.save()
         res.status(200).json({ message: 'Registration successful' })
     } catch (err) {
