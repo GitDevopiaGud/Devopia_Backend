@@ -10,7 +10,9 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
 
+app.use('/user',userRouter)
 app.use('/auth', authRouter)
 
 app.listen(process.env.PORT, () => { console.log(`Working On Port ${process.env.PORT}`) })
